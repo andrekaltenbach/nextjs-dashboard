@@ -100,9 +100,6 @@ export async function updateInvoice(id: string, prevState: State, formData: Form
     `;
   } catch (error) {
     console.error(error);
-    return {
-      message: 'Database Error: Failed to Update Invoice',
-    };
   }
   // clear the client cache and make new server request
   revalidatePath('/dashboard/invoices');
@@ -115,9 +112,6 @@ export async function deleteInvoice(id: string) {
     await sql`DELETE FROM invoices WHERE id = ${id}`;
   } catch (error) {
     console.error(error);
-    return {
-      message: 'Database Error: Failed to Delete Invoice',
-    };
   }
   revalidatePath('/dashboard/invoices');
 }
